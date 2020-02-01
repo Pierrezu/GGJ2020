@@ -39,6 +39,10 @@ public class PlayerTwoInteractions : MonoBehaviour
     }
     private void CarryingObject(Transform carryied)
     {
+        if (carryied.GetComponent<FloatingEffect>() != null)
+        {
+            carryied.GetComponent<FloatingEffect>().enabled = false;
+        }
         carryied.GetComponent<ObjectsAttributes>().isCarryied = true;
         carryied.transform.position = transform.position + transform.forward;
         carryied.transform.parent = transform;
@@ -50,6 +54,11 @@ public class PlayerTwoInteractions : MonoBehaviour
     {
         if (actualObjectCarried != null && canThrow && !isInCraftRange)
         {
+            if (actualObjectCarried.GetComponent<FloatingEffect>() != null)
+            {
+                actualObjectCarried.GetComponent<FloatingEffect>().enabled = true;
+                actualObjectCarried.GetComponent<FloatingEffect>().posOffset = actualObjectCarried.transform.position;
+            }
             actualObjectCarried.GetComponent<ObjectsAttributes>().isCarryied = false;
             actualObjectCarried.transform.parent = null;
             actualObjectCarried = null;
