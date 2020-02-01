@@ -15,7 +15,12 @@ public class OvenBehaviour : MonoBehaviour
     private bool isInQteMode;
     public float timeBeforeStartingQTE = 1;
     public GameObject actualPlayerUsingOven;
-    public float timeBetweenInputs= 1.5f;
+    public float timeBetweenInputs = 1.5f;
+    private GameObject actualkey;
+    private bool havePressedAButton;
+
+    public float reactionTime =1.1f;
+
     [Header("VFX variables")]
     public GameObject startBurningVFX;
 
@@ -37,6 +42,7 @@ public class OvenBehaviour : MonoBehaviour
 
     private void KeyGeneration()
     {
+        havePressedAButton = false;
         QTEgen = Random.Range(1, 4);
 
         if (QTEgen == 1)
@@ -55,9 +61,10 @@ public class OvenBehaviour : MonoBehaviour
         {
             correctKey = 4;
         }
-        Instantiate(keyImages[correctKey - 1], transform.position + Vector3.up * 2, Quaternion.identity);
+       actualkey = Instantiate(keyImages[correctKey - 1], transform.position + Vector3.up * 2, Quaternion.identity);
 
         isInQteMode = true;
+        Invoke("CheckIfPlayerPressedAButton",0.75f);
     }
 
     private void Update()
@@ -72,55 +79,50 @@ public class OvenBehaviour : MonoBehaviour
                     {
                         if (Input.GetButtonDown("A1"))
                         {
-                            Debug.Log("gg");
+                            InputSuccess();
                         }
                         else
                         {
-                            Debug.Log("non");
+                            FailedCraft();
                         }
                     }
-                }
-                if (Input.anyKeyDown)
-                {
+
                     if (correctKey == 2)
                     {
                         if (Input.GetButtonDown("B1"))
                         {
-                            Debug.Log("gg");
+                            InputSuccess();
                         }
                         else
                         {
-                            Debug.Log("non");
+                            FailedCraft();
                         }
                     }
-                }
-                if (Input.anyKeyDown)
-                {
+
                     if (correctKey == 3)
                     {
                         if (Input.GetButtonDown("X1"))
                         {
-                            Debug.Log("gg");
+                            InputSuccess();
                         }
                         else
                         {
-                            Debug.Log("non");
+                            FailedCraft();
                         }
                     }
-                }
-                if (Input.anyKeyDown)
-                {
-                    if (correctKey == 3)
+
+                    if (correctKey == 4)
                     {
                         if (Input.GetButtonDown("Y1"))
                         {
-                            Debug.Log("gg");
+                            InputSuccess();
                         }
                         else
                         {
-                            Debug.Log("non");
+                            FailedCraft();
                         }
                     }
+                    havePressedAButton = true;
                 }
             }
             if (actualPlayerUsingOven.GetComponent<PlayerTwoInteractions>() != null)
@@ -131,55 +133,50 @@ public class OvenBehaviour : MonoBehaviour
                     {
                         if (Input.GetButtonDown("A2"))
                         {
-                            Debug.Log("gg");
+                            InputSuccess();
                         }
                         else
                         {
-                            Debug.Log("non");
+                            FailedCraft();
                         }
                     }
-                }
-                if (Input.anyKeyDown)
-                {
+
                     if (correctKey == 2)
                     {
                         if (Input.GetButtonDown("B2"))
                         {
-                            Debug.Log("gg");
+                            InputSuccess();
                         }
                         else
                         {
-                            Debug.Log("non");
+                            FailedCraft();
                         }
                     }
-                }
-                if (Input.anyKeyDown)
-                {
+
                     if (correctKey == 3)
                     {
                         if (Input.GetButtonDown("X2"))
                         {
-                            Debug.Log("gg");
+                            InputSuccess();
                         }
                         else
                         {
-                            Debug.Log("non");
+                            FailedCraft();
                         }
                     }
-                }
-                if (Input.anyKeyDown)
-                {
-                    if (correctKey == 3)
+
+                    if (correctKey == 4)
                     {
                         if (Input.GetButtonDown("Y2"))
                         {
-                            Debug.Log("gg");
+                            InputSuccess();
                         }
                         else
                         {
-                            Debug.Log("non");
+                            FailedCraft();
                         }
                     }
+                    havePressedAButton = true;
                 }
             }
         }
@@ -187,6 +184,8 @@ public class OvenBehaviour : MonoBehaviour
 
     private void InputSuccess()
     {
+        Debug.Log("Success");
+        Destroy(actualkey.gameObject);
         actualNbOfKeyPressed++;
         if (actualNbOfKeyPressed >= nbOfKeyToBePressed)
         {
@@ -200,11 +199,24 @@ public class OvenBehaviour : MonoBehaviour
     private void CraftSuccess()
     {
         Debug.Log("Lingot Crafté!");
+        isInQteMode = false;
+        actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = true;
+        actualNbOfKeyPressed = 0;
     }
     private void FailedCraft()
     {
+        Destroy(actualkey.gameObject);
         actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = true;
-
+        isInQteMode = false;
+        actualNbOfKeyPressed = 0;
+        Debug.Log("fail");
+    }
+    private void CheckIfPlayerPressedAButton()
+    {
+        if(!havePressedAButton)
+        {
+            FailedCraft();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
