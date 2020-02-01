@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5002372365763347189}
   - component: {fileID: 5002372365763347188}
   - component: {fileID: 5002372365763347187}
-  - component: {fileID: 5002372365763347177}
+  - component: {fileID: 109356270}
   m_Layer: 0
   m_Name: PlayerTwo
   m_TagString: Untagged
@@ -129,7 +129,7 @@ MonoBehaviour:
   moveSpeed: 6
   AuthorizedToMove: 1
   playerNumber: 2
---- !u!114 &5002372365763347177
+--- !u!114 &109356270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,10 +138,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5002372365763347186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e94d8432bd1ab3845a6806577dd70d58, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fffcd55b8582664cbb498d4d81d2874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1
+  isInCraftRange: 0
+  nearCraftObject: {fileID: 0}
 --- !u!1 &5002372365999008343
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class PlayerTwoInteractions : MonoBehaviour
     public float radius = 1;
     private Transform actualObjectCarried;
     private bool canThrow = false;
+    public bool isInCraftRange;
+    public GameObject nearCraftObject;
 
     private void Start()
     {
@@ -46,13 +48,25 @@ public class PlayerTwoInteractions : MonoBehaviour
     }
     private void ThrowObject()
     {
-        if (actualObjectCarried != null && canThrow)
+        if (actualObjectCarried != null && canThrow && !isInCraftRange)
         {
             actualObjectCarried.GetComponent<ObjectsAttributes>().isCarryied = false;
             actualObjectCarried.transform.parent = null;
             actualObjectCarried = null;
             isCarrying = false;
             canThrow = false;
+        }
+        if (isInCraftRange)
+        {
+            if (nearCraftObject.GetComponent<OvenBehaviour>() != null)
+            {
+                isCarrying = false;
+                canThrow = false;
+                nearCraftObject.GetComponent<OvenBehaviour>().actualPlayerUsingOven = this.gameObject;
+                nearCraftObject.GetComponent<OvenBehaviour>().StartBurning();
+                Destroy(actualObjectCarried.gameObject);
+                GetComponent<PlayerController>().AuthorizedToMove = false;
+            }
         }
     }
     private void ThrowCooldown()
@@ -65,4 +79,5 @@ public class PlayerTwoInteractions : MonoBehaviour
         Gizmos.DrawWireSphere(transform.forward + Vector3.up, radius);
     }
 }
+
 
