@@ -14,12 +14,12 @@ public class PlayerInteractions : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("Interact") && !isCarrying)
         {
             Interact();
         }
 
-        if (Input.GetButtonDown("Interact2"))
+        if (Input.GetButtonDown("Interact2")&& !isCarrying)
         {
             Interact();
         }
@@ -28,11 +28,16 @@ public class PlayerInteractions : MonoBehaviour
     {
         foreach (Collider hitcol in Physics.OverlapSphere(transform.forward +Vector3.up, radius))
         {
-            if(hitcol.CompareTag("Interactible"))
+            if(hitcol.CompareTag("Carryable"))
             {
                 //dosomething
+                isCarrying = true;
             }
         }
+    }
+    private void CarryingObject()
+    {
+        
     }
     private void OnDrawGizmosSelected()
     {
