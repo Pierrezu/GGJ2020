@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInteractions : MonoBehaviour
 {
     private PlayerController playercontroller;
+    private bool isCarrying =false;
+    public float radius=1;
 
     private void Start()
     {
@@ -12,23 +14,29 @@ public class PlayerInteractions : MonoBehaviour
     }
     void Update()
     {
-        if(playercontroller.playerNumber == 1)
+        if (Input.GetButtonDown("Interact"))
         {
-            if (Input.GetButtonDown("Interact"))
-            {
-                Debug.Log(playercontroller.playerNumber + "st player interact");
-            }
+            Interact();
         }
-        if (playercontroller.playerNumber == 2)
+
+        if (Input.GetButtonDown("Interact2"))
         {
-            if (Input.GetButtonDown("Interact2"))
-            {
-                Debug.Log(playercontroller.playerNumber + "nd player interact");
-            }
+            Interact();
         }
     }
     private void Interact()
     {
-
+        foreach (Collider hitcol in Physics.OverlapSphere(transform.forward +Vector3.up, radius))
+        {
+            if(hitcol.CompareTag("Interactible"))
+            {
+                //dosomething
+            }
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.forward+Vector3.up, radius);
     }
 }
