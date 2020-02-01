@@ -5,4 +5,6 @@ using UnityEngine;
 public class ObjectsAttributes : MonoBehaviour
 {
     public bool isCarryied = false;
+    public bool isCharcoal;
+
 }

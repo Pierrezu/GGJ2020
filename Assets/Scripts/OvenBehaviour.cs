@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class OvenBehaviour : MonoBehaviour
 {
+    public bool isActivated;
+
     private int QTEgen;
     private int correctKey;
     private int nbOfKeyToBePressed;
+
     public int maxNbOfKey;
     public int minNbofKey;
     private int actualNbOfKeyPressed;
@@ -19,7 +22,10 @@ public class OvenBehaviour : MonoBehaviour
     private GameObject actualkey;
     private bool havePressedAButton;
 
-    public float reactionTime =1.1f;
+    public float reactionTime = 1.1f;
+
+
+    public GameObject ObjectCrafted;
 
     [Header("VFX variables")]
     public GameObject startBurningVFX;
@@ -43,7 +49,7 @@ public class OvenBehaviour : MonoBehaviour
     private void KeyGeneration()
     {
         havePressedAButton = false;
-        QTEgen = Random.Range(1, 4);
+        QTEgen = Random.Range(1, 5);
 
         if (QTEgen == 1)
         {
@@ -61,10 +67,10 @@ public class OvenBehaviour : MonoBehaviour
         {
             correctKey = 4;
         }
-       actualkey = Instantiate(keyImages[correctKey - 1], transform.position + Vector3.up * 2, Quaternion.identity);
+        actualkey = Instantiate(keyImages[correctKey - 1], transform.position + Vector3.up * 2, Quaternion.identity);
 
         isInQteMode = true;
-        Invoke("CheckIfPlayerPressedAButton",0.75f);
+        Invoke("CheckIfPlayerPressedAButton", 0.99f);
     }
 
     private void Update()
@@ -202,6 +208,14 @@ public class OvenBehaviour : MonoBehaviour
         isInQteMode = false;
         actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = true;
         actualNbOfKeyPressed = 0;
+        GiveCraftedObject();
+    }
+    private void GiveCraftedObject()
+    {
+        // for (int i = 0; i < nbOfKeyToBePressed; i++)
+        //{
+        Instantiate(ObjectCrafted, transform.GetChild(0).transform.position + Vector3.up, Quaternion.identity);
+        //}
     }
     private void FailedCraft()
     {
@@ -213,7 +227,7 @@ public class OvenBehaviour : MonoBehaviour
     }
     private void CheckIfPlayerPressedAButton()
     {
-        if(!havePressedAButton)
+        if (!havePressedAButton)
         {
             FailedCraft();
         }

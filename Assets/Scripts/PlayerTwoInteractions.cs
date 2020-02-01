@@ -69,12 +69,22 @@ public class PlayerTwoInteractions : MonoBehaviour
         {
             if (nearCraftObject.GetComponent<OvenBehaviour>() != null)
             {
+                if (nearCraftObject.GetComponent<OvenBehaviour>().isActivated)
+                {
+                    isCarrying = false;
+                    canThrow = false;
+                    nearCraftObject.GetComponent<OvenBehaviour>().actualPlayerUsingOven = this.gameObject;
+                    nearCraftObject.GetComponent<OvenBehaviour>().StartBurning();
+                    Destroy(actualObjectCarried.gameObject);
+                    GetComponent<PlayerController>().AuthorizedToMove = false;
+                }
+            }
+            if(nearCraftObject.GetComponent<FurnaceBehaviour>() != null&& actualObjectCarried.GetComponent<ObjectsAttributes>().isCharcoal)
+            {
                 isCarrying = false;
                 canThrow = false;
-                nearCraftObject.GetComponent<OvenBehaviour>().actualPlayerUsingOven = this.gameObject;
-                nearCraftObject.GetComponent<OvenBehaviour>().StartBurning();
                 Destroy(actualObjectCarried.gameObject);
-                GetComponent<PlayerController>().AuthorizedToMove = false;
+                nearCraftObject.GetComponent<FurnaceBehaviour>().ResetCoolDown();
             }
         }
     }
