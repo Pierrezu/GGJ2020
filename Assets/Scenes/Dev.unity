@@ -373,7 +373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421205832}
   m_LocalRotation: {x: -0, y: -0.2588186, z: -0, w: 0.965926}
-  m_LocalPosition: {x: -8.51, y: 1.49, z: 9.08}
+  m_LocalPosition: {x: -7.51, y: 1.49, z: -0.92}
   m_LocalScale: {x: 3.1308, y: 3.1308, z: 3.1308}
   m_Children: []
   m_Father: {fileID: 0}
@@ -391,8 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c00546449cd6444ab97860a24f48e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNbOfKey: 0
-  minNbofKey: 0
+  maxNbOfKey: 6
+  minNbofKey: 1
   keyImages:
   - {fileID: 5042367955224911938, guid: b53fb1a249af4a44e802e3b91e0ccecf, type: 3}
   - {fileID: 7213569421618067234, guid: ce169b64885d4784399c7ef5c0aea1dc, type: 3}
@@ -401,6 +401,7 @@ MonoBehaviour:
   timeBeforeStartingQTE: 1
   actualPlayerUsingOven: {fileID: 0}
   timeBetweenInputs: 1.5
+  reactionTime: 1.1
   startBurningVFX: {fileID: 0}
 --- !u!65 &1421205838
 BoxCollider:
