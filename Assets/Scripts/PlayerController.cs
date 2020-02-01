@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         else  // si le joueur ne bouge pas
         {
             isMoving = false;
-            rb.velocity = new Vector3(0f, 0f, 0f);  // la vitesse du joueur est de 0
+            rb.velocity = Vector3.zero;  // la vitesse du joueur est de 0
             transform.rotation = lastRotation; // le joueur regarde dans la dernière direction enregistrée
         }
     }

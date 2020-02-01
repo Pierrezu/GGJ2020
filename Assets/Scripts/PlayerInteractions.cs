@@ -7,6 +7,7 @@ public class PlayerInteractions : MonoBehaviour
     private PlayerController playercontroller;
     private bool isCarrying =false;
     public float radius=1;
+    private Transform actualObjectCarried;
 
     private void Start()
     {
@@ -14,30 +15,45 @@ public class PlayerInteractions : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && !isCarrying)
+        if (Input.GetButtonDown("Interact"))
         {
             Interact();
         }
 
-        if (Input.GetButtonDown("Interact2")&& !isCarrying)
+        if (Input.GetButtonDown("Interact2"))
         {
             Interact();
         }
     }
     private void Interact()
     {
-        foreach (Collider hitcol in Physics.OverlapSphere(transform.forward +Vector3.up, radius))
+        foreach (Collider hitcol in Physics.OverlapSphere(transform.position+transform.forward +Vector3.up, radius))
         {
-            if(hitcol.CompareTag("Carryable"))
+            if (hitcol.CompareTag("Carryable") &&!isCarrying)
             {
-                //dosomething
-                isCarrying = true;
+                CarryingObject(hitcol.transform);
             }
         }
+        if(isCarrying)
+        {
+            ThrowObject();
+        }
     }
-    private void CarryingObject()
+    private void CarryingObject(Transform carryied)
     {
-        
+        carryied.transform.position = transform.position + transform.forward;
+        carryied.transform.parent = transform;
+        actualObjectCarried = carryied;
+        isCarrying = true;
+    }
+    private void ThrowObject()
+    {
+        if (actualObjectCarried != null)
+        {
+            actualObjectCarried.transform.parent = null;
+            actualObjectCarried = null;
+            isCarrying = false;
+        }
     }
     private void OnDrawGizmosSelected()
     {
