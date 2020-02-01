@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteractions : MonoBehaviour
+public class PlayerTwoInteractions : MonoBehaviour
 {
     private PlayerController playercontroller;
-    private bool isCarrying =false;
-    public float radius=1;
+    private bool isCarrying = false;
+    public float radius = 1;
     private Transform actualObjectCarried;
+    private bool canThrow = false;
 
     private void Start()
     {
@@ -15,11 +16,6 @@ public class PlayerInteractions : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("Interact"))
-        {
-            Interact();
-        }
-
         if (Input.GetButtonDown("Interact2"))
         {
             Interact();
@@ -27,37 +23,46 @@ public class PlayerInteractions : MonoBehaviour
     }
     private void Interact()
     {
-        foreach (Collider hitcol in Physics.OverlapSphere(transform.position+transform.forward +Vector3.up, radius))
+        foreach (Collider hitcol in Physics.OverlapSphere(transform.position + transform.forward + Vector3.up, radius))
         {
-            if (hitcol.CompareTag("Carryable") &&!isCarrying)
+            if (hitcol.CompareTag("Carryable") && !isCarrying && hitcol.GetComponent<ObjectsAttributes>().isCarryied == false)
             {
                 CarryingObject(hitcol.transform);
             }
         }
-        if(isCarrying)
+        if (isCarrying)
         {
             ThrowObject();
         }
     }
     private void CarryingObject(Transform carryied)
     {
+        carryied.GetComponent<ObjectsAttributes>().isCarryied = true;
         carryied.transform.position = transform.position + transform.forward;
         carryied.transform.parent = transform;
         actualObjectCarried = carryied;
         isCarrying = true;
+        Invoke("ThrowCooldown", 0.01f);
     }
     private void ThrowObject()
     {
-        if (actualObjectCarried != null)
+        if (actualObjectCarried != null && canThrow)
         {
+            actualObjectCarried.GetComponent<ObjectsAttributes>().isCarryied = false;
             actualObjectCarried.transform.parent = null;
             actualObjectCarried = null;
             isCarrying = false;
+            canThrow = false;
         }
+    }
+    private void ThrowCooldown()
+    {
+        canThrow = true;
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.forward+Vector3.up, radius);
+        Gizmos.DrawWireSphere(transform.forward + Vector3.up, radius);
     }
 }
+
