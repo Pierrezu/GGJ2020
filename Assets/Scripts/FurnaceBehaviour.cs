@@ -41,6 +41,14 @@ public class FurnaceBehaviour : MonoBehaviour
         {
             linkedObject.GetComponent<OvenBehaviour>().isActivated = true;
         }
+        if (linkedObject.GetComponent<FabricsBehaviour>() != null)
+        {
+            if (linkedObject.GetComponent<FabricsBehaviour>().isActivated == false)
+            {
+                linkedObject.GetComponent<FabricsBehaviour>().StartCreating();
+            }
+            linkedObject.GetComponent<FabricsBehaviour>().isActivated = true;
+        }
     }
     private void StopWorking()
     {
@@ -48,6 +56,11 @@ public class FurnaceBehaviour : MonoBehaviour
         if(linkedObject.GetComponent<OvenBehaviour>() != null)
         {
             linkedObject.GetComponent<OvenBehaviour>().isActivated = false;
+        }
+        if (linkedObject.GetComponent<FabricsBehaviour>() != null)
+        {
+            linkedObject.GetComponent<FabricsBehaviour>().isActivated = false;
+            linkedObject.GetComponent<FabricsBehaviour>().CancelInvoke();
         }
     }
     private void OnTriggerEnter(Collider other)

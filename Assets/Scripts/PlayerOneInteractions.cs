@@ -51,6 +51,11 @@ public class PlayerOneInteractions : MonoBehaviour
                 carryied.GetComponent<BatteryBehaviour>().SetPlugState();
             }
         }
+        if(carryied.GetComponent<Rigidbody>()!= null)
+        {
+            carryied.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            carryied.GetComponent<Rigidbody>().isKinematic = true;
+        }
         carryied.GetComponent<ObjectsAttributes>().isCarryied = true;
         carryied.transform.position = transform.position + transform.forward;
         carryied.transform.parent = transform;
