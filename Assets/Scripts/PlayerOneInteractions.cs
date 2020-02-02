@@ -39,20 +39,28 @@ public class PlayerOneInteractions : MonoBehaviour
     }
     private void CarryingObject(Transform carryied)
     {
-        if(carryied.GetComponent<FloatingEffect>() != null)
+        if (carryied.GetComponent<FloatingEffect>() != null)
         {
             carryied.GetComponent<FloatingEffect>().enabled = false;
+        }
+        if (carryied.GetComponent<BatteryBehaviour>() != null)
+        {
+            carryied.GetComponent<BatteryBehaviour>().isPlugged = false;
+            if (carryied.GetComponent<BatteryBehaviour>().linkedPlug != null)
+            {
+                carryied.GetComponent<BatteryBehaviour>().SetPlugState();
+            }
         }
         carryied.GetComponent<ObjectsAttributes>().isCarryied = true;
         carryied.transform.position = transform.position + transform.forward;
         carryied.transform.parent = transform;
         actualObjectCarried = carryied;
         isCarrying = true;
-        Invoke("ThrowCooldown",0.01f);
+        Invoke("ThrowCooldown", 0.01f);
     }
     private void ThrowObject()
     {
-        if (actualObjectCarried != null && canThrow &&!isInCraftRange)
+        if (actualObjectCarried != null && canThrow && !isInCraftRange)
         {
             if (actualObjectCarried.GetComponent<FloatingEffect>() != null)
             {
@@ -65,9 +73,9 @@ public class PlayerOneInteractions : MonoBehaviour
             isCarrying = false;
             canThrow = false;
         }
-        if(isInCraftRange)
+        if (isInCraftRange && actualObjectCarried != null)
         {
-            if(nearCraftObject.GetComponent<OvenBehaviour>() != null)
+            if (nearCraftObject.GetComponent<OvenBehaviour>() != null)
             {
                 if (nearCraftObject.GetComponent<OvenBehaviour>().isActivated)
                 {
@@ -77,6 +85,7 @@ public class PlayerOneInteractions : MonoBehaviour
                     nearCraftObject.GetComponent<OvenBehaviour>().StartBurning();
                     Destroy(actualObjectCarried.gameObject);
                     GetComponent<PlayerController>().AuthorizedToMove = false;
+                    GetComponent<Rigidbody>().velocity = Vector3.zero;
                 }
             }
             if (nearCraftObject.GetComponent<FurnaceBehaviour>() != null && actualObjectCarried.GetComponent<ObjectsAttributes>().isCharcoal)
@@ -85,6 +94,21 @@ public class PlayerOneInteractions : MonoBehaviour
                 canThrow = false;
                 Destroy(actualObjectCarried.gameObject);
                 nearCraftObject.GetComponent<FurnaceBehaviour>().ResetCoolDown();
+            }
+            if (nearCraftObject.GetComponent<PlugBehaviour>() != null && actualObjectCarried.GetComponent<ObjectsAttributes>().isABattery)
+            {
+                if (nearCraftObject.GetComponent<PlugBehaviour>().isActivated == false)
+                {
+                    actualObjectCarried.GetComponent<BatteryBehaviour>().isPlugged = true;
+                    actualObjectCarried.GetComponent<BatteryBehaviour>().linkedPlug = nearCraftObject;
+                    actualObjectCarried.GetComponent<ObjectsAttributes>().isCarryied = false;
+                    actualObjectCarried.transform.position = nearCraftObject.transform.position;
+                    actualObjectCarried.GetComponent<BatteryBehaviour>().SetPlugState();
+                    actualObjectCarried.transform.parent = null;
+                    actualObjectCarried = null;
+                    isCarrying = false;
+                    canThrow = false;
+                }
             }
         }
     }
@@ -98,3 +122,5 @@ public class PlayerOneInteractions : MonoBehaviour
         Gizmos.DrawWireSphere(transform.forward + Vector3.up, radius);
     }
 }
+
+

@@ -6,5 +6,5 @@ public class ObjectsAttributes : MonoBehaviour
 {
     public bool isCarryied = false;
     public bool isCharcoal;
-
+    public bool isABattery;
 }
