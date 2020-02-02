@@ -2561,6 +2561,7 @@ GameObject:
   - component: {fileID: 9200748356950707986}
   - component: {fileID: 9200748356950707985}
   - component: {fileID: 9200748356950707984}
+  - component: {fileID: 274498715099828633}
   m_Layer: 0
   m_Name: "Chaudi\xE8re"
   m_TagString: Untagged
@@ -3124,3 +3125,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!114 &274498715099828633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200748356950707983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce25a8584d52694cb79b83e7d2e3f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObject: {fileID: 0}
+  timeLeft: 30
+  vfxStartBurning: {fileID: 0}
