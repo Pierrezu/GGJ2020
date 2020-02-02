@@ -9,7 +9,7 @@ public class FurnaceBehaviour : MonoBehaviour
     public float timeLeft = 30.0f;
     private bool isWorking = true;
     private float initialTime;
-    public GameObject vfxStartBurning;
+    public GameObject startBurningVFX;
 
     private void Start()
     {
@@ -35,6 +35,7 @@ public class FurnaceBehaviour : MonoBehaviour
     }
     public void ResetCoolDown()
     {
+        Instantiate(startBurningVFX, GetComponentInChildren<ParticleSystem>().transform.position, Quaternion.identity);
         isWorking = true;
         timeLeft = initialTime;
         if (linkedObject.GetComponent<OvenBehaviour>() != null)

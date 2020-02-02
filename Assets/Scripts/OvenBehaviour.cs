@@ -54,7 +54,14 @@ public class OvenBehaviour : MonoBehaviour
             if (actualNbOfLingots >= nbOfLingotsRequired && pileIsInside)
             {
                 Invoke("KeyGeneration", timeBeforeStartingQTE);
-                actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = false;
+                if (actualPlayerUsingOven.GetComponent<PlayerOneController>() != null)
+                {
+                    actualPlayerUsingOven.GetComponent<PlayerOneController>().AuthorizedToMove = false;
+                }
+                if (actualPlayerUsingOven.GetComponent<PlayerTwoController>() != null)
+                {
+                    actualPlayerUsingOven.GetComponent<PlayerTwoController>().AuthorizedToMove = false;
+                }
                 actualPlayerUsingOven.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
@@ -226,7 +233,14 @@ public class OvenBehaviour : MonoBehaviour
         Debug.Log("Lingot Crafté!");
         isInQteMode = false;
         pileIsInside = false;
-        actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = true;
+        if (actualPlayerUsingOven.GetComponent<PlayerOneController>() != null)
+        {
+            actualPlayerUsingOven.GetComponent<PlayerOneController>().AuthorizedToMove = true;
+        }
+        if (actualPlayerUsingOven.GetComponent<PlayerTwoController>() != null)
+        {
+            actualPlayerUsingOven.GetComponent<PlayerTwoController>().AuthorizedToMove = true;
+        }
         actualNbOfKeyPressed = 0;
         GiveCraftedObject();
     }
@@ -249,7 +263,14 @@ public class OvenBehaviour : MonoBehaviour
         pileIsInside = false;
         actualNbOfLingots = 0;
         Destroy(actualkey.gameObject);
-        actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = true;
+        if (actualPlayerUsingOven.GetComponent<PlayerOneController>() != null)
+        {
+            actualPlayerUsingOven.GetComponent<PlayerOneController>().AuthorizedToMove = true;
+        }
+        if (actualPlayerUsingOven.GetComponent<PlayerTwoController>() != null)
+        {
+            actualPlayerUsingOven.GetComponent<PlayerTwoController>().AuthorizedToMove = true;
+        }
         isInQteMode = false;
         actualNbOfKeyPressed = 0;
         GameObject clone = Instantiate(failedObjectCrafted, transform.GetChild(0).transform.position + Vector3.up * 2, Quaternion.identity);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerTwoInteractions : MonoBehaviour
 {
-    private PlayerController playercontroller;
+    private PlayerTwoController playercontroller;
     private bool isCarrying = false;
     public float radius = 1;
     private Transform actualObjectCarried;
@@ -14,7 +14,7 @@ public class PlayerTwoInteractions : MonoBehaviour
 
     private void Start()
     {
-        playercontroller = GetComponent<PlayerController>();
+        playercontroller = GetComponent<PlayerTwoController>();
     }
     void Update()
     {
