@@ -67,8 +67,8 @@ public class OvenBehaviour : MonoBehaviour
         {
             correctKey = 4;
         }
-        actualkey = Instantiate(keyImages[correctKey - 1], transform.position + Vector3.up * 2, Quaternion.identity);
-
+        actualkey = Instantiate(keyImages[correctKey - 1], actualPlayerUsingOven.transform.position+ Vector3.up * 2, Quaternion.identity);
+        actualkey.GetComponent<ButtonBehaviour>().playerPos = actualPlayerUsingOven.transform;
         isInQteMode = true;
         Invoke("CheckIfPlayerPressedAButton", 0.99f);
     }
