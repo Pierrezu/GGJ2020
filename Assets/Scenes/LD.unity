@@ -47193,8 +47193,8 @@ Camera:
   m_GameObject: {fileID: 1800261914}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -56087,6 +56087,21 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 496920402}
+    - target: {fileID: 571989031108499010, guid: b29f4eae9904d8745ab0b8e07afab9f6,
+        type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 571989031108499010, guid: b29f4eae9904d8745ab0b8e07afab9f6,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 571989031108499010, guid: b29f4eae9904d8745ab0b8e07afab9f6,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1360007930459109370, guid: b29f4eae9904d8745ab0b8e07afab9f6,
         type: 3}
       propertyPath: m_Mesh
