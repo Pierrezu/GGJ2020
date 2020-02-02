@@ -3467,7 +3467,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ObjectCrafted
       value: 
-      objectReference: {fileID: 8376291421705989207, guid: 3cb26e657e22123419f0928f5f8267ab,
+      objectReference: {fileID: 3199091428298931556, guid: 3baca715f617d6240992b760f65b9420,
         type: 3}
     - target: {fileID: 7402569725165938584, guid: bb2e0b56c0ab72b458507f0cf7a1bed9,
         type: 3}

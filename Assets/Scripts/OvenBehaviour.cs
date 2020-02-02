@@ -220,6 +220,8 @@ public class OvenBehaviour : MonoBehaviour
         // for (int i = 0; i < nbOfKeyToBePressed; i++)
         //{
         GameObject clone = Instantiate(ObjectCrafted, transform.GetChild(0).transform.position + Vector3.up * 2, Quaternion.identity);
+        clone.AddComponent<Rigidbody>();
+        clone.GetComponent<Collider>().isTrigger = false;
         clone.GetComponent<Rigidbody>().AddForce(Vector3.back * expulsionForce + Vector3.up * expulsionForce);
         //}
     }
