@@ -3129,6 +3129,7 @@ MonoBehaviour:
   timeLeft: 30
   startBurningVFX: {fileID: 5625058914019801835, guid: 51fb11b762766db41a861c598a32b8e9,
     type: 3}
+  disableAtStart: 1
 --- !u!65 &718151278574661685
 BoxCollider:
   m_ObjectHideFlags: 0

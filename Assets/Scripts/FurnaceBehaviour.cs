@@ -45,6 +45,10 @@ public class FurnaceBehaviour : MonoBehaviour
     }
     public void ResetCoolDown()
     {
+        if (linkedObject.GetComponentInChildren<ScrollingTexture>() != null)
+        {
+            linkedObject.GetComponentInChildren<ScrollingTexture>().enabled = true;
+        }
         ps.Play();
         Instantiate(startBurningVFX, GetComponentInChildren<ParticleSystem>().transform.position, Quaternion.identity);
         isWorking = true;
@@ -68,6 +72,10 @@ public class FurnaceBehaviour : MonoBehaviour
     }
     private void StopWorking()
     {
+        if(linkedObject.GetComponentInChildren<ScrollingTexture>() != null)
+        {
+            linkedObject.GetComponentInChildren<ScrollingTexture>().enabled = false;
+        }
         ps.Stop();
         isWorking = false;
         if(linkedObject.GetComponent<OvenBehaviour>() != null)

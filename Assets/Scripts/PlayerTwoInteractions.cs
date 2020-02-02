@@ -118,7 +118,7 @@ public class PlayerTwoInteractions : MonoBehaviour
                     actualObjectCarried.GetComponent<BatteryBehaviour>().isPlugged = true;
                     actualObjectCarried.GetComponent<BatteryBehaviour>().linkedPlug = nearCraftObject;
                     actualObjectCarried.GetComponent<ObjectsAttributes>().isCarryied = false;
-                    actualObjectCarried.transform.position = nearCraftObject.transform.position;
+                    actualObjectCarried.transform.position = nearCraftObject.GetComponent<PlugBehaviour>().pileAnchor.position;
                     actualObjectCarried.GetComponent<BatteryBehaviour>().SetPlugState();
                     actualObjectCarried.transform.parent = null;
                     actualObjectCarried = null;

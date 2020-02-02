@@ -6,7 +6,7 @@ public class PlugBehaviour : MonoBehaviour
 {
     public bool isActivated;
     public GameObject[] linkedObjects;
-
+    public Transform pileAnchor;
     public void Activation()
     {/*
         foreach (GameObject activables in linkedObjects)
