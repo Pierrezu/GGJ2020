@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ddb2fc9b11ebe45a09e62145dbb93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apparitionVfx: {fileID: 0}
+  apparitionVfx: {fileID: 7477338988197726384, guid: 996089f8c259ace4daabd279616eb01f,
+    type: 3}
   playerPos: {fileID: 0}
   heightFromPlayer: 2

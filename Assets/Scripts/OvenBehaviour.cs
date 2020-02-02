@@ -41,7 +41,7 @@ public class OvenBehaviour : MonoBehaviour
         {
             if (startBurningVFX != null)
             {
-                Instantiate(startBurningVFX, transform.position, Quaternion.identity);
+                Instantiate(startBurningVFX, GetComponentInChildren<ParticleSystem>().transform.position, Quaternion.identity);
             }
             Invoke("KeyGeneration", timeBeforeStartingQTE);
         }
@@ -225,6 +225,10 @@ public class OvenBehaviour : MonoBehaviour
     }
     private void FailedCraft()
     {
+        if (FailedInputVFX != null)
+        {
+            Instantiate(FailedInputVFX, actualkey.transform.position, Quaternion.identity);
+        }
         Destroy(actualkey.gameObject);
         actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = true;
         isInQteMode = false;
