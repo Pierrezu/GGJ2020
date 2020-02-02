@@ -10,11 +10,21 @@ public class FurnaceBehaviour : MonoBehaviour
     private bool isWorking = true;
     private float initialTime;
     public GameObject startBurningVFX;
+    private ParticleSystem ps;
 
+    public bool disableAtStart;
     private void Start()
     {
         initialTime = timeLeft;
-        ResetCoolDown();
+        ps = GetComponentInChildren<ParticleSystem>();
+        if (!disableAtStart)
+        {
+            ResetCoolDown();
+        }
+        else
+        {
+            timeLeft = 0f;
+        }
         
     }
     void Update()
@@ -35,6 +45,7 @@ public class FurnaceBehaviour : MonoBehaviour
     }
     public void ResetCoolDown()
     {
+        ps.Play();
         Instantiate(startBurningVFX, GetComponentInChildren<ParticleSystem>().transform.position, Quaternion.identity);
         isWorking = true;
         timeLeft = initialTime;
@@ -57,6 +68,7 @@ public class FurnaceBehaviour : MonoBehaviour
     }
     private void StopWorking()
     {
+        ps.Stop();
         isWorking = false;
         if(linkedObject.GetComponent<OvenBehaviour>() != null)
         {
