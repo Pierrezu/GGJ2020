@@ -16,9 +16,17 @@ public class PlugBehaviour : MonoBehaviour
                 activables.GetComponent<DoorBehaviour>().Open();
             }
         }*/
+        isActivated = true;
         for (int i = 0; i < linkedObjects.Length; i++)
         {
-            linkedObjects[i].GetComponent<DoorBehaviour>().Open();
+            if (linkedObjects[i].GetComponent<DoorBehaviour>() != null)
+            {
+                linkedObjects[i].GetComponent<DoorBehaviour>().Open();
+            }
+            if(linkedObjects[i].GetComponent<LaserBehaviour>() != null)
+            {
+                linkedObjects[i].GetComponent<LaserBehaviour>().CheckIfCanShoot();
+            }
         }
     }
 
@@ -31,9 +39,18 @@ public class PlugBehaviour : MonoBehaviour
                  activables.GetComponent<DoorBehaviour>().Close();
              }
          }*/
+        isActivated = false;
+
         for (int i = 0; i < linkedObjects.Length; i++)
         {
-            linkedObjects[i].GetComponent<DoorBehaviour>().Close();
+            if (linkedObjects[i].GetComponent<DoorBehaviour>() != null)
+            {
+                linkedObjects[i].GetComponent<DoorBehaviour>().Close();
+            }
+            if (linkedObjects[i].GetComponent<LaserBehaviour>() != null)
+            {
+                linkedObjects[i].GetComponent<LaserBehaviour>().nbOfPilePlugged--;
+            }
         }
     }
 
