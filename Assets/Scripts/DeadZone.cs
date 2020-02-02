@@ -8,7 +8,7 @@ public class DeadZone : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Carryable") && other.GetComponent<ObjectsAttributes>() != null)
         {
-            if (other.GetComponent<ObjectsAttributes>().isABattery== false)
+            if (other.GetComponent<ObjectsAttributes>().isABattery== false && other.GetComponent<ObjectsAttributes>().isCarryied ==false)
             {
                 Destroy(other.gameObject);
             }

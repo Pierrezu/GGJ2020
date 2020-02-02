@@ -26,7 +26,7 @@ public class OvenBehaviour : MonoBehaviour
 
 
     public GameObject ObjectCrafted;
-
+    public float expulsionForce= 200;
     [Header("VFX variables")]
     public GameObject startBurningVFX;
 
@@ -214,7 +214,8 @@ public class OvenBehaviour : MonoBehaviour
     {
         // for (int i = 0; i < nbOfKeyToBePressed; i++)
         //{
-        Instantiate(ObjectCrafted, transform.GetChild(0).transform.position + Vector3.up, Quaternion.identity);
+      GameObject clone =  Instantiate(ObjectCrafted, transform.GetChild(0).transform.position + Vector3.up*2, Quaternion.identity);
+        clone.GetComponent<Rigidbody>().AddForce(Vector3.back*expulsionForce+Vector3.up * expulsionForce);
         //}
     }
     private void FailedCraft()
