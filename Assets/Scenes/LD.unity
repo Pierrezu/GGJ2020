@@ -2436,7 +2436,7 @@ MonoBehaviour:
   createdObject: {fileID: 1688132057254294946, guid: e8736fc0229bed541a2dbcdd38a6249c,
     type: 3}
   isActivated: 0
-  creatingRate: 2
+  creatingRate: 3.5
   spawningPoint: {fileID: 762602553}
   direction: {x: 5, y: 0, z: 0}
   speed: 3
@@ -23607,7 +23607,7 @@ PrefabInstance:
     - target: {fileID: 274498715099828633, guid: d94319e6a84a3ad4cbba6d5c5e0ae98a,
         type: 3}
       propertyPath: timeLeft
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1818677211793774186, guid: d94319e6a84a3ad4cbba6d5c5e0ae98a,
         type: 3}
@@ -49581,7 +49581,7 @@ PrefabInstance:
     - target: {fileID: 274498715099828633, guid: d94319e6a84a3ad4cbba6d5c5e0ae98a,
         type: 3}
       propertyPath: timeLeft
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 274498715099828633, guid: d94319e6a84a3ad4cbba6d5c5e0ae98a,
         type: 3}
@@ -49803,6 +49803,17 @@ PrefabInstance:
         type: 3}
       propertyPath: minNbofKey
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709874134761144913, guid: d942d2e217f92644dbcad69c7b1368f9,
+        type: 3}
+      propertyPath: failedObjectCrafted
+      value: 
+      objectReference: {fileID: 3347453765785381968, guid: 4f07318fb75db504b8386b19a795b47a,
+        type: 3}
+    - target: {fileID: 7709874134761144913, guid: d942d2e217f92644dbcad69c7b1368f9,
+        type: 3}
+      propertyPath: nbOfLingotsRequired
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7255982986753811395, guid: d942d2e217f92644dbcad69c7b1368f9,
         type: 3}
@@ -57490,7 +57501,7 @@ PrefabInstance:
     - target: {fileID: 274498715099828633, guid: d94319e6a84a3ad4cbba6d5c5e0ae98a,
         type: 3}
       propertyPath: timeLeft
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1818677211793774186, guid: d94319e6a84a3ad4cbba6d5c5e0ae98a,
         type: 3}

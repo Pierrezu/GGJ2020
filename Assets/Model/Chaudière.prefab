@@ -3127,7 +3127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 0}
   timeLeft: 30
-  vfxStartBurning: {fileID: 0}
+  vfxStartBurning: {fileID: 5625058914019801835, guid: 51fb11b762766db41a861c598a32b8e9,
+    type: 3}
 --- !u!65 &718151278574661685
 BoxCollider:
   m_ObjectHideFlags: 0

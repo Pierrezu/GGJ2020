@@ -3284,6 +3284,10 @@ MonoBehaviour:
   actualPlayerUsingOven: {fileID: 0}
   timeBetweenInputs: 1.5
   reactionTime: 1.1
+  pileIsInside: 0
+  nbOfLingotsRequired: 0
+  actualNbOfLingots: 0
+  failedObjectCrafted: {fileID: 0}
   ObjectCrafted: {fileID: 0}
   expulsionForce: 200
   startBurningVFX: {fileID: 5625058914019801835, guid: 51fb11b762766db41a861c598a32b8e9,
@@ -3292,6 +3296,7 @@ MonoBehaviour:
     type: 3}
   FailedInputVFX: {fileID: 1098570695411837992, guid: 5d8df97062970b8408f5748a2aecc180,
     type: 3}
+  nbOfLingots: 0
 --- !u!65 &2065763643084163490
 BoxCollider:
   m_ObjectHideFlags: 0
