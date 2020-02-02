@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4743378511036675353}
   - component: {fileID: 3633658628577369092}
   - component: {fileID: 1189811572458522470}
-  - component: {fileID: 7383043093972481381}
   - component: {fileID: 4165835824359736567}
+  - component: {fileID: 639773242794619011}
   m_Layer: 0
   m_Name: "Pile_Cass\xE9"
   m_TagString: Carryable
@@ -19920,20 +19920,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!64 &7383043093972481381
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3347453765785381968}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!114 &4165835824359736567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19948,5 +19934,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCarryied: 0
   isCharcoal: 0
-  isABattery: 0
+  isABattery: 1
   isABatteryRepaired: 0
+--- !u!65 &639773242794619011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347453765785381968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.2501589, z: 1}
+  m_Center: {x: 0.25000077, y: 0.62507945, z: -0.25094768}

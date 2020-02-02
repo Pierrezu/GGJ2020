@@ -84,13 +84,28 @@ public class PlayerOneInteractions : MonoBehaviour
             {
                 if (nearCraftObject.GetComponent<OvenBehaviour>().isActivated)
                 {
-                    isCarrying = false;
-                    canThrow = false;
-                    nearCraftObject.GetComponent<OvenBehaviour>().actualPlayerUsingOven = this.gameObject;
-                    nearCraftObject.GetComponent<OvenBehaviour>().StartBurning();
-                    Destroy(actualObjectCarried.gameObject);
-                    GetComponent<PlayerController>().AuthorizedToMove = false;
-                    GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                    if(actualObjectCarried.GetComponent<ObjectsAttributes>().isCharcoal == false && actualObjectCarried.GetComponent<ObjectsAttributes>().isABattery == false && actualObjectCarried.GetComponent<ObjectsAttributes>().isABattery == false)
+                    {
+                        nearCraftObject.GetComponent<OvenBehaviour>().actualNbOfLingots++;
+                        isCarrying = false;
+                        canThrow = false;
+                        nearCraftObject.GetComponent<OvenBehaviour>().actualPlayerUsingOven = this.gameObject;
+                        Destroy(actualObjectCarried.gameObject);
+                        nearCraftObject.GetComponent<OvenBehaviour>().StartBurning();
+                    }
+                    if (actualObjectCarried.GetComponent<ObjectsAttributes>().isABattery && actualObjectCarried.GetComponent<ObjectsAttributes>().isABatteryRepaired == false)
+                    {
+                        isCarrying = false;
+                        canThrow = false;
+                        nearCraftObject.GetComponent<OvenBehaviour>().actualPlayerUsingOven = this.gameObject;
+                        nearCraftObject.GetComponent<OvenBehaviour>().pileIsInside = true;
+                        Destroy(actualObjectCarried.gameObject);
+                        nearCraftObject.GetComponent<OvenBehaviour>().StartBurning();
+                    }
+
+                    /*  GetComponent<PlayerController>().AuthorizedToMove = false;
+                      GetComponent<Rigidbody>().velocity = Vector3.zero;*/
                 }
             }
             if (nearCraftObject.GetComponent<FurnaceBehaviour>() != null && actualObjectCarried.GetComponent<ObjectsAttributes>().isCharcoal)

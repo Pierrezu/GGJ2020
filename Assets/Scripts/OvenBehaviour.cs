@@ -24,13 +24,21 @@ public class OvenBehaviour : MonoBehaviour
 
     public float reactionTime = 1.1f;
 
+    [Header("Recipe")]
+    public bool pileIsInside;
+    public int nbOfLingotsRequired;
+    public int actualNbOfLingots;
 
+    public GameObject failedObjectCrafted;
     public GameObject ObjectCrafted;
     public float expulsionForce = 200;
     [Header("VFX variables")]
     public GameObject startBurningVFX;
     public GameObject successInputVFX;
     public GameObject FailedInputVFX;
+
+    public int nbOfLingots;
+
     private void Start()
     {
         nbOfKeyToBePressed = Random.Range(minNbofKey, maxNbOfKey);
@@ -43,7 +51,12 @@ public class OvenBehaviour : MonoBehaviour
             {
                 Instantiate(startBurningVFX, GetComponentInChildren<ParticleSystem>().transform.position, Quaternion.identity);
             }
-            Invoke("KeyGeneration", timeBeforeStartingQTE);
+            if (actualNbOfLingots >= nbOfLingotsRequired && pileIsInside)
+            {
+                Invoke("KeyGeneration", timeBeforeStartingQTE);
+                actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = false;
+                actualPlayerUsingOven.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
         }
     }
 
@@ -209,8 +222,10 @@ public class OvenBehaviour : MonoBehaviour
     }
     private void CraftSuccess()
     {
+        actualNbOfLingots = 0;
         Debug.Log("Lingot Crafté!");
         isInQteMode = false;
+        pileIsInside = false;
         actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = true;
         actualNbOfKeyPressed = 0;
         GiveCraftedObject();
@@ -231,10 +246,16 @@ public class OvenBehaviour : MonoBehaviour
         {
             Instantiate(FailedInputVFX, actualkey.transform.position, Quaternion.identity);
         }
+        pileIsInside = false;
+        actualNbOfLingots = 0;
         Destroy(actualkey.gameObject);
         actualPlayerUsingOven.GetComponent<PlayerController>().AuthorizedToMove = true;
         isInQteMode = false;
         actualNbOfKeyPressed = 0;
+        GameObject clone = Instantiate(failedObjectCrafted, transform.GetChild(0).transform.position + Vector3.up * 2, Quaternion.identity);
+        clone.AddComponent<Rigidbody>();
+        clone.GetComponent<Collider>().isTrigger = false;
+        clone.GetComponent<Rigidbody>().AddForce(Vector3.back * expulsionForce + Vector3.up * expulsionForce);
         Debug.Log("fail");
     }
     private void CheckIfPlayerPressedAButton()
