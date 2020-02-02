@@ -11,6 +11,10 @@ public class ButtonBehaviour : MonoBehaviour
     private Vector3 initialScale;
     private void Start()
     {
+        if(apparitionVfx != null)
+        {
+            Instantiate(apparitionVfx, transform.position, Quaternion.identity);
+        }
         initialScale = transform.localScale;
         // transform.DOScale(3, 0.1f).SetLoops(-1, LoopType.Yoyo);
         transform.localScale = Vector3.zero;
