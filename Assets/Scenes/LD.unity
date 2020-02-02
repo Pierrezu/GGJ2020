@@ -61678,7 +61678,7 @@ PrefabInstance:
     - target: {fileID: 274498715099828633, guid: d94319e6a84a3ad4cbba6d5c5e0ae98a,
         type: 3}
       propertyPath: disableAtStart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1818677211793774186, guid: d94319e6a84a3ad4cbba6d5c5e0ae98a,
         type: 3}
