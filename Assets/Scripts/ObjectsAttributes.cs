@@ -7,7 +7,7 @@ public class ObjectsAttributes : MonoBehaviour
     public bool isCarryied = false;
     public bool isCharcoal;
     public bool isABattery;
-
+    public bool isABatteryRepaired;
     private void OnCollisionEnter(Collision other)
     {
         if (isABattery)

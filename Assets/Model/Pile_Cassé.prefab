@@ -19947,3 +19947,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCarryied: 0
+  isCharcoal: 0
+  isABattery: 0
+  isABatteryRepaired: 0

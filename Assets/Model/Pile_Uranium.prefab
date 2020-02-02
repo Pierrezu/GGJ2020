@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 630793948267856863}
   - component: {fileID: 5943803505945246265}
   m_Layer: 0
-  m_Name: Pile_uranium
+  m_Name: Pile_Uranium
   m_TagString: Carryable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,6 +551,7 @@ MonoBehaviour:
   isCarryied: 0
   isCharcoal: 0
   isABattery: 1
+  isABatteryRepaired: 1
 --- !u!114 &630793948267856863
 MonoBehaviour:
   m_ObjectHideFlags: 0
