@@ -26,10 +26,11 @@ public class OvenBehaviour : MonoBehaviour
 
 
     public GameObject ObjectCrafted;
-    public float expulsionForce= 200;
+    public float expulsionForce = 200;
     [Header("VFX variables")]
     public GameObject startBurningVFX;
-
+    public GameObject successInputVFX;
+    public GameObject FailedInputVFX;
     private void Start()
     {
         nbOfKeyToBePressed = Random.Range(minNbofKey, maxNbOfKey);
@@ -67,7 +68,7 @@ public class OvenBehaviour : MonoBehaviour
         {
             correctKey = 4;
         }
-        actualkey = Instantiate(keyImages[correctKey - 1], actualPlayerUsingOven.transform.position+ Vector3.up * 2, Quaternion.identity);
+        actualkey = Instantiate(keyImages[correctKey - 1], actualPlayerUsingOven.transform.position + Vector3.up * 2, Quaternion.identity);
         actualkey.GetComponent<ButtonBehaviour>().playerPos = actualPlayerUsingOven.transform;
         isInQteMode = true;
         Invoke("CheckIfPlayerPressedAButton", 0.99f);
@@ -191,6 +192,10 @@ public class OvenBehaviour : MonoBehaviour
     private void InputSuccess()
     {
         Debug.Log("Success");
+        if (successInputVFX != null)
+        {
+            Instantiate(successInputVFX, actualkey.transform.position, Quaternion.identity);
+        }
         Destroy(actualkey.gameObject);
         actualNbOfKeyPressed++;
         if (actualNbOfKeyPressed >= nbOfKeyToBePressed)
@@ -214,8 +219,8 @@ public class OvenBehaviour : MonoBehaviour
     {
         // for (int i = 0; i < nbOfKeyToBePressed; i++)
         //{
-      GameObject clone =  Instantiate(ObjectCrafted, transform.GetChild(0).transform.position + Vector3.up*2, Quaternion.identity);
-        clone.GetComponent<Rigidbody>().AddForce(Vector3.back*expulsionForce+Vector3.up * expulsionForce);
+        GameObject clone = Instantiate(ObjectCrafted, transform.GetChild(0).transform.position + Vector3.up * 2, Quaternion.identity);
+        clone.GetComponent<Rigidbody>().AddForce(Vector3.back * expulsionForce + Vector3.up * expulsionForce);
         //}
     }
     private void FailedCraft()

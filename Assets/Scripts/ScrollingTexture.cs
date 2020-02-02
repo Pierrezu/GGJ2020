@@ -9,8 +9,8 @@ public class ScrollingTexture : MonoBehaviour {
     private float scrollXSpeed;
     private float scrollYSpeed;
     private Vector2 scrollSpeed;
-    [Range(-0.05f,0.05f)] public float xMinSpeed, xMaxSpeed;
-    [Range(-0.05f, 0.05f)] public float yMinSpeed, yMaxSpeed;
+    [Range(-1,1)] public float xMinSpeed, xMaxSpeed;
+    [Range(-1, 1)] public float yMinSpeed, yMaxSpeed;
 
     private void Start()
     {
