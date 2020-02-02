@@ -2562,6 +2562,8 @@ GameObject:
   - component: {fileID: 9200748356950707985}
   - component: {fileID: 9200748356950707984}
   - component: {fileID: 274498715099828633}
+  - component: {fileID: 718151278574661685}
+  - component: {fileID: 7025650348654013568}
   m_Layer: 0
   m_Name: "Chaudi\xE8re"
   m_TagString: Untagged
@@ -3140,3 +3142,29 @@ MonoBehaviour:
   linkedObject: {fileID: 0}
   timeLeft: 30
   vfxStartBurning: {fileID: 0}
+--- !u!65 &718151278574661685
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200748356950707983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5349717, y: 2.541082, z: 2.5125723}
+  m_Center: {x: 1.2324334, y: 1.2701957, z: -1.2552772}
+--- !u!65 &7025650348654013568
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200748356950707983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5349717, y: 2.541082, z: 3.3613825}
+  m_Center: {x: 1.2324336, y: 1.2701957, z: -1.6796856}
