@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4609469201410577265}
   - component: {fileID: 4609469201410577264}
   - component: {fileID: 4609469201410577267}
-  - component: {fileID: 4609469201410577268}
   - component: {fileID: 4609469201410577269}
   m_Layer: 0
   m_Name: Charbon
@@ -660,22 +659,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
---- !u!114 &4609469201410577268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4609469201410577266}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ab1b9f8274803b41aadac328ed35447, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  degreesPerSecond: 86
-  amplitude: 0.4
-  frequency: 1
-  posOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &4609469201410577269
 MonoBehaviour:
   m_ObjectHideFlags: 0

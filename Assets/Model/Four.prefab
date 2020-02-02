@@ -3285,7 +3285,13 @@ MonoBehaviour:
   timeBetweenInputs: 1.5
   reactionTime: 1.1
   ObjectCrafted: {fileID: 0}
-  startBurningVFX: {fileID: 0}
+  expulsionForce: 200
+  startBurningVFX: {fileID: 5625058914019801835, guid: 51fb11b762766db41a861c598a32b8e9,
+    type: 3}
+  successInputVFX: {fileID: 892585801109400435, guid: 8cb561298d55518479bad3a729bee13c,
+    type: 3}
+  FailedInputVFX: {fileID: 1098570695411837992, guid: 5d8df97062970b8408f5748a2aecc180,
+    type: 3}
 --- !u!65 &2065763643084163490
 BoxCollider:
   m_ObjectHideFlags: 0
