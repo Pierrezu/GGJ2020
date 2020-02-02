@@ -12,6 +12,8 @@ public class PlayerTwoInteractions : MonoBehaviour
     public bool isInCraftRange;
     public GameObject nearCraftObject;
 
+    public GameObject charcoal;
+
     private void Start()
     {
         playercontroller = GetComponent<PlayerTwoController>();
@@ -30,6 +32,11 @@ public class PlayerTwoInteractions : MonoBehaviour
             if (hitcol.CompareTag("Carryable") && !isCarrying && hitcol.GetComponent<ObjectsAttributes>().isCarryied == false)
             {
                 CarryingObject(hitcol.transform);
+            }
+            if (hitcol.CompareTag("PileOfThing") && !isCarrying)
+            {
+                GameObject clone = Instantiate(charcoal, transform.position, Quaternion.identity);
+                CarryingObject(clone.transform);
             }
         }
         if (isCarrying)

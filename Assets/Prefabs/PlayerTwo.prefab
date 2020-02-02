@@ -127,6 +127,8 @@ MonoBehaviour:
   radius: 1
   isInCraftRange: 0
   nearCraftObject: {fileID: 0}
+  charcoal: {fileID: 4609469201410577266, guid: 8856148f4486b0a40abfc4c64e086ad4,
+    type: 3}
 --- !u!114 &992024261
 MonoBehaviour:
   m_ObjectHideFlags: 0
