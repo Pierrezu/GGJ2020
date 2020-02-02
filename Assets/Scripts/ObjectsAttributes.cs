@@ -8,16 +8,13 @@ public class ObjectsAttributes : MonoBehaviour
     public bool isCharcoal;
     public bool isABattery;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (isABattery)
         {
             if (GetComponent<Rigidbody>() != null)
             {
                 GetComponent<Rigidbody>().useGravity = false;
-                GetComponent<Collider>().isTrigger = true;
             }
         }
-
     }
-}
