@@ -40,6 +40,10 @@ public class FurnaceBehaviour : MonoBehaviour
         if (linkedObject.GetComponent<OvenBehaviour>() != null)
         {
             linkedObject.GetComponent<OvenBehaviour>().isActivated = true;
+            if (linkedObject.GetComponentInChildren<ParticleSystem>() != null)
+            {
+                linkedObject.GetComponentInChildren<ParticleSystem>().Play();
+            }
         }
         if (linkedObject.GetComponent<FabricsBehaviour>() != null)
         {
@@ -56,6 +60,10 @@ public class FurnaceBehaviour : MonoBehaviour
         if(linkedObject.GetComponent<OvenBehaviour>() != null)
         {
             linkedObject.GetComponent<OvenBehaviour>().isActivated = false;
+            if(linkedObject.GetComponentInChildren<ParticleSystem>()!= null)
+            {
+                linkedObject.GetComponentInChildren<ParticleSystem>().Stop();
+            }
         }
         if (linkedObject.GetComponent<FabricsBehaviour>() != null)
         {

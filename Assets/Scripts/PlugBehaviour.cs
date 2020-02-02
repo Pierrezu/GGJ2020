@@ -8,27 +8,35 @@ public class PlugBehaviour : MonoBehaviour
     public GameObject[] linkedObjects;
 
     public void Activation()
-    {
+    {/*
         foreach (GameObject activables in linkedObjects)
         {
-            /*  if(activables.GetComponent<DoorBehaviour>()!= null)
-              {
-                  dosomething()
-              }
-          }*/
+            if (activables.GetComponent<DoorBehaviour>() != null)
+            {
+                activables.GetComponent<DoorBehaviour>().Open();
+            }
+        }*/
+        for (int i = 0; i < linkedObjects.Length; i++)
+        {
+            linkedObjects[i].GetComponent<DoorBehaviour>().Open();
         }
     }
+
     public void Deactivation()
     {
-        foreach (GameObject activables in linkedObjects)
+        /* foreach (GameObject activables in linkedObjects)
+         {
+             if (activables.GetComponent<DoorBehaviour>() != null)
+             {
+                 activables.GetComponent<DoorBehaviour>().Close();
+             }
+         }*/
+        for (int i = 0; i < linkedObjects.Length; i++)
         {
-            /*  if(activables.GetComponent<DoorBehaviour>()!= null)
-              {
-                  dosomething()
-              }
-          }*/
+            linkedObjects[i].GetComponent<DoorBehaviour>().Close();
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerOneInteractions>() != null)
