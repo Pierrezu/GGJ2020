@@ -39,6 +39,7 @@ public class OvenBehaviour : MonoBehaviour
 
     public int nbOfLingots;
 
+    public AudioClip goodSound;
     private void Start()
     {
         nbOfKeyToBePressed = Random.Range(minNbofKey, maxNbOfKey);
@@ -211,6 +212,7 @@ public class OvenBehaviour : MonoBehaviour
 
     private void InputSuccess()
     {
+        AudioSource.PlayClipAtPoint(goodSound, Camera.main.transform.position,0.05f);
         Debug.Log("Success");
         if (successInputVFX != null)
         {

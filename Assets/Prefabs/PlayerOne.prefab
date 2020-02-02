@@ -204,6 +204,7 @@ MonoBehaviour:
   radius: 1
   isInCraftRange: 0
   nearCraftObject: {fileID: 0}
+  clip: {fileID: 8300000, guid: 022f166bbab14b8458a2375bdc13a90a, type: 3}
   charcoal: {fileID: 4609469201410577266, guid: 8856148f4486b0a40abfc4c64e086ad4,
     type: 3}
 --- !u!114 &8893314418090480887

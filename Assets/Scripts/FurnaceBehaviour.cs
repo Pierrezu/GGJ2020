@@ -11,12 +11,14 @@ public class FurnaceBehaviour : MonoBehaviour
     private float initialTime;
     public GameObject startBurningVFX;
     private ParticleSystem ps;
+    private AudioSource audiosource;
 
     public bool disableAtStart;
     private void Start()
     {
         initialTime = timeLeft;
         ps = GetComponentInChildren<ParticleSystem>();
+        audiosource = GetComponent<AudioSource>();
         if (!disableAtStart)
         {
             ResetCoolDown();
@@ -45,6 +47,7 @@ public class FurnaceBehaviour : MonoBehaviour
     }
     public void ResetCoolDown()
     {
+        audiosource.Play();
         if (linkedObject.GetComponentInChildren<ScrollingTexture>() != null)
         {
             linkedObject.GetComponentInChildren<ScrollingTexture>().enabled = true;
@@ -60,6 +63,10 @@ public class FurnaceBehaviour : MonoBehaviour
             {
                 linkedObject.GetComponentInChildren<ParticleSystem>().Play();
             }
+            if(linkedObject.GetComponent<AudioSource>()!= null)
+            {
+                linkedObject.GetComponent<AudioSource>().Play();
+            }
         }
         if (linkedObject.GetComponent<FabricsBehaviour>() != null)
         {
@@ -72,7 +79,8 @@ public class FurnaceBehaviour : MonoBehaviour
     }
     private void StopWorking()
     {
-        if(linkedObject.GetComponentInChildren<ScrollingTexture>() != null)
+        audiosource.Stop();
+        if (linkedObject.GetComponentInChildren<ScrollingTexture>() != null)
         {
             linkedObject.GetComponentInChildren<ScrollingTexture>().enabled = false;
         }
@@ -84,6 +92,10 @@ public class FurnaceBehaviour : MonoBehaviour
             if(linkedObject.GetComponentInChildren<ParticleSystem>()!= null)
             {
                 linkedObject.GetComponentInChildren<ParticleSystem>().Stop();
+            }
+            if (linkedObject.GetComponent<AudioSource>() != null)
+            {
+                linkedObject.GetComponent<AudioSource>().Stop();
             }
         }
         if (linkedObject.GetComponent<FabricsBehaviour>() != null)

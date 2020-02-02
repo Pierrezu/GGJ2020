@@ -11,6 +11,7 @@ public class PlayerTwoInteractions : MonoBehaviour
     private bool canThrow = false;
     public bool isInCraftRange;
     public GameObject nearCraftObject;
+    public AudioClip clip;
 
     public GameObject charcoal;
 
@@ -46,6 +47,8 @@ public class PlayerTwoInteractions : MonoBehaviour
     }
     private void CarryingObject(Transform carryied)
     {
+        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, 0.05f);
+
         if (carryied.GetComponent<FloatingEffect>() != null)
         {
             carryied.GetComponent<FloatingEffect>().enabled = false;
